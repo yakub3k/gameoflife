@@ -2,7 +2,6 @@ package gameoflife.board;
 
 import game.GameRules;
 import game.GameState;
-import gameoflife.ConwayRulesInfinity;
 
 import java.util.List;
 
@@ -30,8 +29,6 @@ public class GameBoardCreator {
 
         originalState.setNextState(mirrorState);
         mirrorState.setNextState(originalState);
-
-        new ConwayRulesInfinity();
 
         return originalState;
     }

@@ -4,6 +4,8 @@ import game.Game;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
+import java.util.Date;
+import java.util.Timer;
 
 import static javax.swing.GroupLayout.DEFAULT_SIZE;
 
@@ -21,6 +23,8 @@ public class Window extends javax.swing.JFrame {
     private final JButton setArtifactButton;              // add new artifacts
 
     private final Game game;
+    private boolean timerMode = false;
+    private Timer timer;
 
     public Window(Game game) {
         this.game = game;
@@ -28,7 +32,9 @@ public class Window extends javax.swing.JFrame {
         panel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(java.awt.event.MouseEvent ev) {
-                panel.pressedInPanel(ev.getX(), ev.getY());
+                if (!timerMode) {
+                    panel.pressedInPanel(ev.getX(), ev.getY());
+                }
             }
         });
 
@@ -84,7 +90,7 @@ public class Window extends javax.swing.JFrame {
                                         .addComponent(setArtifactButton)
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(stepButton)
-                                        .addComponent(startButton )))
+                                        .addComponent(startButton)))
                         .addContainerGap());
     }
 
@@ -108,25 +114,24 @@ public class Window extends javax.swing.JFrame {
 
     private void setupButtons() {
         startButton.addActionListener(c -> {
+            timerMode = !timerMode;
             if (START_LABEL.equals(startButton.getText())) {
                 startButton.setText(STOP_LABEL);
-                game.start();
+                timer = new Timer();
+                timer.schedule(new GameTimer(game), new Date(), 500);
             } else {
-                game.stop();
+                timer.cancel();
                 startButton.setText(START_LABEL);
             }
         });
         chessButton.addActionListener(c -> {
         });
-        randomButton.addActionListener(c -> {
-            game.randomAll();
-        });
+        randomButton.addActionListener(c -> game.randomAll());
         clearButton.addActionListener(c -> game.clearAll());
         blackButton.addActionListener(c -> game.blackAll());
         setArtifactButton.addActionListener(c -> {
-            game.stop();
 
         });
-        stepButton.addActionListener(c-> game.step());
+        stepButton.addActionListener(c -> game.step());
     }
 }

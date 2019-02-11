@@ -1,4 +1,4 @@
-package gameoflife;
+package gameoflife.rules;
 
 import game.GameRules;
 import gameoflife.board.Cell;
@@ -32,13 +32,13 @@ public class ConwayRulesInfinity implements GameRules {
     @Override
     @SuppressWarnings("Duplicates")
     public List<Cell> getNeighbors(Cell[][] matrix, int x, int y, int width, int height) {
-        int left = (x - 1) >= 0
+        int left = x > 0
                 ? x - 1
                 : width - 1;
         int right = (x + 1) < width
                 ? x + 1
                 : 0;
-        int top = (y - 1) >= 0
+        int top = y > 0
                 ? y - 1
                 : height - 1;
         int bottom = (y + 1) < height

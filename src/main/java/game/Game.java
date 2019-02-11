@@ -7,8 +7,7 @@ public interface Game {
     boolean isAlive(int x, int y);
     int getHeight();
     int getWidth();
-    void start();
-    void stop();
+
     void step();
     GameState nextStep();
     GameRules getRules();

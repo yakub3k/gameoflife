@@ -40,16 +40,6 @@ public class GameOfLife implements Game {
     }
 
     @Override
-    public void start() {
-        Log.log("Game Of Life: start");
-    }
-
-    @Override
-    public void stop() {
-        Log.log("Game Of Life: stop");
-    }
-
-    @Override
     public void blackAll() {
         currentGame.blackAll();
     }
