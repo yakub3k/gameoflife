@@ -38,30 +38,17 @@ public class ConwayRulesWall implements GameRules {
     public List<Cell> getNeighbors(Cell[][] matrix, int x, int y, int width, int height) {
         boolean leftWall = x <= 0;
         boolean rightWall = x + 1 >= width;
-        boolean bottomWall = y <= 0;
-        boolean topWall = y + 1 >= height;
+        boolean topWall = y <= 0;
+        boolean bottomWall = y + 1 >= height;
 
-        int left = x > 0
-                ? x - 1
-                : width - 1;
-        int right = (x + 1) < width
-                ? x + 1
-                : 0;
-        int top = y > 0
-                ? y - 1
-                : height - 1;
-        int bottom = (y + 1) < height
-                ? y + 1
-                : 0;
-
-        Cell leftTop = leftWall && topWall ? border : matrix[left][top];
-        Cell leftMid = leftWall ? border : matrix[left][y];
-        Cell leftBottom = leftWall && bottomWall ? border : matrix[left][bottom];
-        Cell centralTop = topWall ? border : matrix[x][top];
-        Cell centralBottom = bottomWall ? border : matrix[x][bottom];
-        Cell rightTop = rightWall && topWall ? border : matrix[right][top];
-        Cell rightMid = rightWall ? border : matrix[right][y];
-        Cell rightBottom = rightWall && bottomWall ? border : matrix[right][bottom];
+        Cell leftTop = leftWall || topWall ? border : matrix[x - 1][y - 1];
+        Cell leftMid = leftWall ? border : matrix[x - 1][y];
+        Cell leftBottom = leftWall || bottomWall ? border : matrix[x - 1][y + 1];
+        Cell centralTop = topWall ? border : matrix[x][y - 1];
+        Cell centralBottom = bottomWall ? border : matrix[x][y + 1];
+        Cell rightTop = rightWall || topWall ? border : matrix[x + 1][y - 1];
+        Cell rightMid = rightWall ? border : matrix[x + 1][y];
+        Cell rightBottom = rightWall || bottomWall ? border : matrix[x + 1][y + 1];
 
         return Arrays.asList(leftTop, leftMid, leftBottom, centralTop, centralBottom, rightTop, rightMid, rightBottom);
     }
