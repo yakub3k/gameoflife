@@ -9,7 +9,7 @@ public class GameTimer extends TimerTask {
 
     private Game game;
 
-    public GameTimer(Game game) {
+    GameTimer(Game game) {
         this.game = game;
     }
 

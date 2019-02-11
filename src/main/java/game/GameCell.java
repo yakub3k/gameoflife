@@ -9,8 +9,6 @@ public interface GameCell {
 
     void setOpposite();
 
-    boolean checkNeighbours();
-
     boolean isAlive();
 
     boolean isAliveInNextStep();

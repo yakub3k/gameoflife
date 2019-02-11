@@ -6,7 +6,6 @@ import game.GameState;
 import java.util.List;
 
 public class GameBoardCreator {
-
     private final Cell[][] cells;
     private final Cell[][] mirror;
     private int width;
@@ -40,7 +39,7 @@ public class GameBoardCreator {
         // Create cells
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < y; j++) {
-                result[i][j] = new Cell(i, j, rules);
+                result[i][j] = new Cell(rules);
             }
         }
 

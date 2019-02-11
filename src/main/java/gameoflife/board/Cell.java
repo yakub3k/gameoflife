@@ -7,21 +7,12 @@ import java.util.List;
 
 public class Cell implements GameCell {
     private boolean alive;
-    private int pos_x;
-    private int pos_y;
     private GameRules rules;
     private List<Cell> neighbours;
 
-    public Cell(int x, int y, GameRules rules) {
-        this.pos_x = x;
-        this.pos_y = y;
+    public Cell(GameRules rules) {
         this.rules = rules;
         this.alive = false;
-    }
-
-    @Override
-    public boolean checkNeighbours() {
-        return false;//todo
     }
 
     @Override

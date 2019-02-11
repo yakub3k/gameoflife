@@ -59,16 +59,14 @@ public class Window extends javax.swing.JFrame {
         );
 
         GroupLayout layout = new GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-
         layout.setHorizontalGroup(createHorizontalGroup(layout));
         layout.setVerticalGroup(createVerticalGroup(layout));
+        getContentPane().setLayout(layout);
 
         setupButtons();
 
         panel.setVisible(true);
         setVisible(true);
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         pack();
     }
 

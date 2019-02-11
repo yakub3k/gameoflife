@@ -1,8 +1,9 @@
 package game;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public interface Game {
+public interface Game extends Serializable {
     void switchCell(int x, int y);
     boolean isAlive(int x, int y);
     int getHeight();

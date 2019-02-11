@@ -10,7 +10,7 @@ public class GameOfLife implements Game {
 
     private final int height;
     private final int width;
-    private GameRules rules;
+    private final GameRules rules;
     private GameState currentGame;
 
     public GameOfLife(int fieldsWidth, int fieldsHeight, GameRules rules) {

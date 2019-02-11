@@ -16,7 +16,7 @@ public class ConwayRulesWall implements GameRules {
     private final Cell border;
 
     public ConwayRulesWall() {
-        this.border = new Cell(-1, -1, this);
+        this.border = new Cell(this);
     }
 
     @Override

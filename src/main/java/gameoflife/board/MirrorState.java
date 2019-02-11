@@ -6,7 +6,7 @@ import game.GameState;
 public class MirrorState implements GameState {
     private final Cell[][] original;
     private final Cell[][] mirror;
-    private GameRules rules;
+    private final GameRules rules;
     private int width;
     private int height;
     private GameState nextState;

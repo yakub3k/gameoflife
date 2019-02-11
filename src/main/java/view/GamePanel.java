@@ -5,21 +5,20 @@ import util.Log;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.TimerTask;
 
 public class GamePanel extends JPanel {
     private static final int GRID_LEN = 10;
 
     private final Game game;
-    private final int height;
-    private final int width;
+    private final int gameHeight;
+    private final int gameWidth;
 
-    public GamePanel(Game game) {
+    GamePanel(Game game) {
         this.game = game;
-        this.height = game.getHeight();
-        this.width = game.getWidth();
-        int heightDimens = height * GRID_LEN;
-        int widthDimens = width * GRID_LEN;
+        this.gameHeight = game.getHeight();
+        this.gameWidth = game.getWidth();
+        int heightDimens = gameHeight * GRID_LEN;
+        int widthDimens = gameWidth * GRID_LEN;
         Log.log("create game panel: " + widthDimens + " / " + heightDimens);
         setPreferredSize(new Dimension(widthDimens, heightDimens));
     }
@@ -36,7 +35,7 @@ public class GamePanel extends JPanel {
         repaint();
     }
 
-    public void pressedInPanel(int height, int width) {
+    void pressedInPanel(int height, int width) {
         int x = height / GRID_LEN;
         int y = width / GRID_LEN;
         game.switchCell(x, y);
@@ -45,8 +44,8 @@ public class GamePanel extends JPanel {
     }
 
     private void drawCells(Graphics2D graphics) {
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
+        for (int x = 0; x < gameWidth; x++) {
+            for (int y = 0; y < gameHeight; y++) {
                 if (game.isAlive(x, y)) {
                     graphics.setColor(Color.BLACK);
                 } else {
