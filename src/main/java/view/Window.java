@@ -67,6 +67,7 @@ public class Window extends javax.swing.JFrame {
 
         panel.setVisible(true);
         setVisible(true);
+        setTitle(game.getWindowTitle());
         pack();
     }
 

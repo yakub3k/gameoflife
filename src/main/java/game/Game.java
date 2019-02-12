@@ -17,6 +17,10 @@ public interface Game extends Serializable {
     void randomAll();
     void chessAll();
 
+    default String getWindowTitle(){
+        return "Game Of Life";
+    }
+
     default void blackAll(GameCell[][] all) {
         for (GameCell[] rows : all) {
             for (GameCell cell : rows) {
