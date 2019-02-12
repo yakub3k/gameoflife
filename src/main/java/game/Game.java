@@ -15,6 +15,7 @@ public interface Game extends Serializable {
     void blackAll();
     void clearAll();
     void randomAll();
+    void chessAll();
 
     default void blackAll(GameCell[][] all) {
         for (GameCell[] rows : all) {
@@ -38,6 +39,17 @@ public interface Game extends Serializable {
             for (GameCell cell : rows) {
                 cell.setAlive(random.nextBoolean());
             }
+        }
+    }
+
+    default void chessAll(GameCell[][] all){
+        boolean chess = false;
+        for (GameCell[] rows : all) {
+            for (GameCell cell : rows) {
+                cell.setAlive(chess);
+                chess = !chess;
+            }
+            chess = !chess;
         }
     }
 }

@@ -52,6 +52,12 @@ public class OriginalState implements GameState {
         randomAll(original);
     }
 
+
+    @Override
+    public void chessAll() {
+        chessAll(original);
+    }
+
     @Override
     public void step() {
         for (int x = 0; x < width; x++) {

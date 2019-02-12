@@ -69,4 +69,9 @@ public class GameOfLife implements Game {
     public void randomAll() {
         currentGame.randomAll();
     }
+
+    @Override
+    public void chessAll() {
+        currentGame.chessAll();
+    }
 }

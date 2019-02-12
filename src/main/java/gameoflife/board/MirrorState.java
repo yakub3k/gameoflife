@@ -53,6 +53,11 @@ public class MirrorState implements GameState {
     }
 
     @Override
+    public void chessAll() {
+        chessAll(mirror);
+    }
+
+    @Override
     public void step() {
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {

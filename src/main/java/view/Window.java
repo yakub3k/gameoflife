@@ -123,6 +123,7 @@ public class Window extends javax.swing.JFrame {
             }
         });
         chessButton.addActionListener(c -> {
+            game.chessAll();
         });
         randomButton.addActionListener(c -> game.randomAll());
         clearButton.addActionListener(c -> game.clearAll());

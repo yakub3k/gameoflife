@@ -8,19 +8,25 @@ import java.util.List;
 
 
 public class ConwayRulesMirror implements GameRules {
-    private static final boolean LIVE = true;
-    private static final boolean[] TRANSFORM_LIVE = new boolean[]
-            {false, false, LIVE, LIVE, false, false, false, false, false};
-    private static final boolean[] TRANSFORM_DEAD = new boolean[]
-            {false, false, false, LIVE, false, false, false, false, false};
+    private final boolean[] transformLive;
+    private final boolean[] transformDead;
 
+    public ConwayRulesMirror() {
+        transformLive = TRANSFORM_LIVE;
+        transformDead = TRANSFORM_DEAD;
+    }
+
+    public ConwayRulesMirror(boolean[] transformLive, boolean[] transformDead) {
+        this.transformLive = transformLive;
+        this.transformDead = transformDead;
+    }
 
     @Override
     public boolean isAliveInNextStep(Cell current, List<Cell> neighbors) {
         int livedNeighbors = getLivedNeighbors(neighbors);
         return current.isAlive()
-                ? TRANSFORM_LIVE[livedNeighbors]
-                : TRANSFORM_DEAD[livedNeighbors];
+                ? transformLive[livedNeighbors]
+                : transformDead[livedNeighbors];
     }
 
     private int getLivedNeighbors(List<Cell> neighbors) {
