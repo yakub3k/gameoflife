@@ -10,6 +10,7 @@ public class MirrorState implements GameState {
     private int width;
     private int height;
     private GameState nextState;
+    private String insertModel;
 
     MirrorState(Cell[][] original, Cell[][] mirror, GameRules rules) {
         this.original = original;
@@ -19,12 +20,29 @@ public class MirrorState implements GameState {
 
     @Override
     public void switchCell(int x, int y) {
-        this.mirror[x][y].setOpposite();
+        if (x < width && y < height)
+            this.mirror[x][y].setOpposite();
     }
 
     @Override
     public boolean isAlive(int x, int y) {
-        return mirror[x][y].isAlive();
+        if (x < width && y < height && x >= 0 && y >= 0) {
+            return mirror[x][y].isAlive();
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public void setAlive(int x, int y) {
+        if (x < width && y < height)
+            this.mirror[x][y].setAlive();
+    }
+
+    @Override
+    public void setDead(int x, int y) {
+        if (x < width && y < height)
+            this.mirror[x][y].setInactive();
     }
 
     @Override

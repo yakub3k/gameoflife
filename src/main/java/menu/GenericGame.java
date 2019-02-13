@@ -33,9 +33,9 @@ class GenericGame extends JPanel {
         textField.setEditable(false);
 
         livePanel = new CheckBoxPanel("live");
-        livePanel.selectDead();
+        livePanel.selectLive();
         deadPanel = new CheckBoxPanel("dead");
-        deadPanel.selectLive();
+        deadPanel.selectDead();
 
         startButton = new JButton("Game");
         startButton.addActionListener(startGameAction());

@@ -1,6 +1,7 @@
 package view;
 
-import game.Game;
+import game.ArtifactGame;
+import menu.ChoiceArtifactMenu;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
@@ -22,11 +23,11 @@ public class Window extends javax.swing.JFrame {
     private final JButton blackButton;                    // set all blacks
     private final JButton setArtifactButton;              // add new artifacts
 
-    private final Game game;
+    private final ArtifactGame game;
     private boolean timerMode = false;
     private Timer timer;
 
-    public Window(Game game) {
+    public Window(ArtifactGame game) {
         this.game = game;
         panel = new GamePanel(game);
         panel.addMouseListener(new MouseAdapter() {
@@ -130,7 +131,7 @@ public class Window extends javax.swing.JFrame {
         clearButton.addActionListener(c -> game.clearAll());
         blackButton.addActionListener(c -> game.blackAll());
         setArtifactButton.addActionListener(c -> {
-
+            new ChoiceArtifactMenu(game).setVisible(true);
         });
         stepButton.addActionListener(c -> game.step());
     }

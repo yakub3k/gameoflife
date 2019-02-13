@@ -6,9 +6,10 @@ import java.util.Random;
 public interface Game extends Serializable {
     void switchCell(int x, int y);
     boolean isAlive(int x, int y);
+    void setAlive(int x, int y);
+    void setDead(int x, int y);
     int getHeight();
     int getWidth();
-
     void step();
     GameState nextStep();
     GameRules getRules();

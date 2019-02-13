@@ -10,6 +10,7 @@ public class OriginalState implements GameState {
     private int width;
     private int height;
     private GameState nextState;
+    private String insertModel;
 
     OriginalState(Cell[][] original, Cell[][] mirror, GameRules rules) {
         this.original = original;
@@ -19,12 +20,29 @@ public class OriginalState implements GameState {
 
     @Override
     public void switchCell(int x, int y) {
-        this.original[x][y].setOpposite();
+        if (x < width && y < height)
+            this.original[x][y].setOpposite();
     }
 
     @Override
     public boolean isAlive(int x, int y) {
-        return original[x][y].isAlive();
+        if (x < width && y < height && x >= 0 && y >= 0) {
+            return original[x][y].isAlive();
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public void setAlive(int x, int y) {
+        if (x < width && y < height)
+            this.original[x][y].setAlive();
+    }
+
+    @Override
+    public void setDead(int x, int y) {
+        if (x < width && y < height)
+            this.original[x][y].setInactive();
     }
 
     @Override
@@ -87,4 +105,5 @@ public class OriginalState implements GameState {
         this.width = width;
         this.height = height;
     }
+
 }
