@@ -29,8 +29,8 @@ public class Artifactory {
         Log.log("Add >" + artifactName + "< on x: " + startX + " y: " + startY);
         boolean[][] matrix = model.getMatrix();
         for (int x = 0; x < model.getWidth(); x++) {
-            for (int y = 0; y < model.getWidth(); y++) {
-                if (matrix[x][y]) {
+            for (int y = 0; y < model.getHeight(); y++) {
+                if (matrix[y][x]) {
                     game.setAlive(startX + x, startY + y);
                 } else {
                     game.setDead(startX + x, startY + y);

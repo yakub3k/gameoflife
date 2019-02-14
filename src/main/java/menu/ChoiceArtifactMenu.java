@@ -1,7 +1,6 @@
 package menu;
 
 import game.ArtifactGame;
-import game.Game;
 import gameoflife.artefact.Artifactory;
 import util.Log;
 
@@ -31,7 +30,6 @@ public class ChoiceArtifactMenu extends JFrame {
         setPreferredSize(new Dimension(200, 260));
         setMinimumSize(new Dimension(100, 100));
         setVisible(true);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         pack();
     }
 }
